@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ASRWebMVC.Models.SlotModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+@if (!User.Identity.Name.Contains("student"))
+{
+	<p>
+		<a asp-action="Create">Create New</a>
+	</p>
+}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Room
+			</th>
+			<th>
+				Date Created
+			</th>
+			<th>
+				Staff
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.RoomId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.StartTime)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.StaffId)
+				</td>
+
+				<td>
+					@if (User.Identity.Name.Contains("student"))
+					{
+						<div>
+							<form asp-action="Book">
+								<input type="hidden" name="staffId" asp-for="@item.StaffId" />
+								<input type="hidden" name="stTime" asp-for="@item.StartTime" />
+								<input type="hidden" name="roomId" asp-for="@item.RoomId" />
+								<input type="submit" value="Book" class="btn btn-sm btn-info" />
+							</form>
+						</div>
+					}
+
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

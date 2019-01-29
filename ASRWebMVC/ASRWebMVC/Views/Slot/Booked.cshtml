@@ -1,0 +1,73 @@
+﻿@model IEnumerable<ASRWebMVC.Models.SlotModel>
+
+@{
+    ViewData["Title"] = "Booked";
+}
+
+<h1>Booked</h1>
+
+<div>
+	<form asp-action="Booked">
+		<div class="form-row">
+			<div class="col">
+			</div>
+			<div class="col">
+				<select class="form-control" name="staffId" asp-items="ViewBag.StaffId"></select>
+			</div>
+			<div class="col">
+				<input type="submit" value="Search" class="btn btn-success"  />
+			</div>
+		</div>
+	</form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffId)
+            </th>
+            <th>
+               StudentId
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.RoomId)*@
+				@item.RoomId
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedInStudentId)
+            </td>
+			<td>
+				<div>
+					<form asp-action="CancelBook">
+						<input type="hidden" name="roomId" asp-for="@item.RoomId" />
+						<input type="hidden" name="stTime" asp-for="@item.StartTime"/>
+						<input type="submit" value="Cancel" class="btn btn-sm btn-danger" /> 
+					</form>
+				</div>
+				@*@Html.ActionLink("Cancel", "CancelBook", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+			</td>
+        </tr>
+}
+    </tbody>
+</table>

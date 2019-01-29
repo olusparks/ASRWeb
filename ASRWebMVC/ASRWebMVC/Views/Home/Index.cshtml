@@ -1,0 +1,40 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome to ASR Web</h1>
+</div>
+
+<div class="jumbotron">
+	@if (User.Identity.IsAuthenticated)
+	{
+		<h3 class="text-center">Hello  @User.Identity.Name!</h3>
+	}
+
+	<div class="row">
+		@if (!User.Identity.IsAuthenticated)
+		{
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Login</h5>
+						<p class="card-text">Access your portal</p>
+						<a asp-controller="auth" asp-action="signin" class="btn btn-primary">Sign In</a>
+					</div>
+				</div>
+			</div>
+
+		}
+
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">FAQ</h5>
+					<p class="card-text">Got some unanswered questions?</p>
+					<a asp-controller="home" asp-action="faq" class="btn btn-primary">FAQ</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model ASRWebMVC.Models.RoomModel
+
+
+@{
+    ViewData["Title"] = "CheckRoom";
+}
+
+<div class="text-center">
+
+	<h2>Check Room</h2>
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 ">
+			<hr />
+			<form asp-action="CheckRoom">
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="RoomId" class="control-label"></label>
+					<select asp-for="RoomId" class="form-control" asp-items="@(new SelectList(ViewBag.AllRooms, "RoomId", "RoomId"))"></select>
+					<span asp-validation-for="RoomId" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="StartTime" class="control-label"></label>
+					<input asp-for="StartTime" class="form-control" />
+					<span asp-validation-for="StartTime" class="text-danger"></span>
+				</div>
+				@*<div class="form-group">
+						<label asp-for="StaffId" class="control-label"></label>
+						<input asp-for="StaffId" class="form-control" />
+						<span asp-validation-for="StaffId" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="BookedInStudentId" class="control-label"></label>
+						<input asp-for="BookedInStudentId" class="form-control" />
+						<span asp-validation-for="BookedInStudentId" class="text-danger"></span>
+					</div>*@
+				<div class="form-group">
+					<input type="submit" value="Check Room" class="btn btn btn-primary" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<a asp-action="Index">Back to List</a>
+	</div>
+
+</div>

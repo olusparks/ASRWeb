@@ -1,0 +1,56 @@
+﻿
+@{
+	ViewData["Title"] = "Landing";
+}
+
+<div class="text-center">
+	<h1 class="display-4">Welcome to ASR Web App</h1>
+
+</div>
+
+<div class="jumbotron">
+	@if (User.Identity.IsAuthenticated)
+	{
+		<h3 class="text-center">Hello  @User.Identity.Name!</h3>
+	}
+
+	@*<div class="row">
+		<div class="col-sm-6">,
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Test 1</h5>
+					<p class="card-text">Do Something</p>
+					<a asp-controller="" asp-action="" class="btn btn-primary">Slot</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Test 2</h5>
+					<p class="card-text">Say Something</p>
+					<a asp-controller="" asp-action="" class="btn btn-primary">Bookings</a>
+				</div>
+			</div>
+		</div>
+	</div>*@
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body text-center">
+					<h3 class="card-title">RMIT</h3>
+					<p class="card-text">Who Are We?</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body text-center">
+					<h3 class="card-title">Unversity!</h3>
+					<p class="card-text">Care to Know More?</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

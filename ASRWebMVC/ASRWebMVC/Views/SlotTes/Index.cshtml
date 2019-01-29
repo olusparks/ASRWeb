@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ASRWebMVC.Models.Slot>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookedInStudent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedInStudent.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.UserId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.StaffId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.StaffId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.RoomId, stTime = item.StartTime })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
